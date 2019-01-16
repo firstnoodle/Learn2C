@@ -33,7 +33,7 @@ $(info ${SOURCES})
 
 
 # build object files..?
-$(OBJ_DIR)/%.o: src/%.c $(DEPENDENCIES)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(DEPENDENCIES)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 # link object files into executable..?

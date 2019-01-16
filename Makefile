@@ -2,9 +2,10 @@
 CC = gcc
 
 # directories
-INCLUDE_DIR = ../include
+INCLUDE_DIR = include
 OBJ_DIR = obj
-LIB_DIR = ../lib
+SRC_DIR = src
+LIB_DIR = lib
 
 # compiler flags
 CFLAGS = -I $(INCLUDE_DIR)
@@ -12,21 +13,33 @@ CFLAGS = -I $(INCLUDE_DIR)
 # heritage lib flag...
 LIBS = -lm
 
+
 # define dependencies / includes
 _DEPENDENCY_LIST = hellomake.h
 DEPENDENCIES = $(patsubst %, $(INCLUDE_DIR)/%, $(_DEPENDENCY_LIST))
+$(info ${DEPENDENCIES})
+
 
 # define object files
 _OBJECT_LIST = hellomake.o hellofunc.o
 OBJECT_FILES = $(patsubst %, $(OBJ_DIR)/%, $(_OBJECT_LIST))
+$(info ${OBJECT_FILES})
+
+
+# NOT USED, but keeping for future reference
+# shell runs a regular shell command -> get all .c files in /src
+SOURCES := $(shell find $(SRC_DIR) -name '*.c')
+$(info ${SOURCES})
+
 
 # build object files..?
-$(OBJ_DIR)/%.o: %.c $(DEPENDENCIES)
+$(OBJ_DIR)/%.o: src/%.c $(DEPENDENCIES)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 # link object files into executable..?
 hellomake: $(OBJECT_FILES)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+
 
 # keeps make from doing something with a file named clean
 .PHONY: clean

@@ -21,7 +21,7 @@ $(info ${DEPENDENCIES})
 
 
 # define object files
-_OBJECT_LIST = hellomake.o hellofunc.o
+_OBJECT_LIST = main.o hellofunc.o
 OBJECT_FILES = $(patsubst %, $(OBJ_DIR)/%, $(_OBJECT_LIST))
 $(info ${OBJECT_FILES})
 

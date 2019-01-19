@@ -8,7 +8,7 @@ SRC_DIR = src
 LIB_DIR = lib
 
 # compiler flags
-CFLAGS = -I $(INCLUDE_DIR) -F /Library/Frameworks/SDL2.framework/Headers
+CFLAGS = -I $(INCLUDE_DIR) -F /Library/Frameworks/SDL2.framework/Headers -framework SDL2
 
 # heritage lib flag...
 LIBS = -lm
